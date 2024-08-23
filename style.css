@@ -1,0 +1,143 @@
+*{
+    background-color: #dab4aa;
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 250;
+}
+.container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around; /* Espaço uniforme entre as imagens */
+        align-items: center; /* Centraliza verticalmente se as imagens tiverem alturas diferentes */
+        gap: 10px;
+        /* -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #000; */
+    }
+    
+.image {
+        flex: 1;
+        padding: 10px 10px 10px 10px; 
+        position: relative; /* Necessário para o posicionamento absoluto do texto */
+        box-sizing: border-box;
+    }
+    
+.image img {
+        width: 100%;
+        height: auto; /* Mantém a proporção da imagem */
+        object-fit: cover; /* Corta as imagens se necessário para preencher a área */
+        border-radius: 10px; /* Opcional: adiciona bordas arredondadas */
+        min-height: 300px;
+        border:solid #7AC74F;
+        transition: transform 0.7s ease; /* Suaviza a transformação ao passar o mouse */
+    }
+    
+.image:hover img {
+        transform: scale(1.1); /* Aumenta a imagem em 10% ao passar o mouse */
+    }
+.image:hover> :not(:hover) {
+        transform: scale(0.9);
+}
+.image:hover .nome {
+        opacity: 1;
+        visibility: visible;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,1);
+    }
+    
+.image:not(:hover) .nome {
+        transition: opacity 0s, visibility 0s; /* Desativa a transição na saída */
+    }
+    
+.nome {
+        position: absolute;
+        color: rgb(255, 255, 255);
+        text-align: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease; /* Suaviza a entrada do texto */
+        pointer-events: none; /* Impede que o texto interfira no hover da imagem */
+    }
+    
+p.nome {
+        bottom: 10px; /* Posiciona o parágrafo mais próximo da parte inferior da imagem */
+        right: 10px; /* Alinha o parágrafo à direita */
+        text-align: right; /* Garante que o texto dentro do parágrafo fique alinhado à direita */
+        padding: 10px;
+        font-size: 1.1em;
+        background-color: rgba(8, 8, 10, 0.5);
+        border-radius: 20px;
+    }
+    
+h3.nome {
+        top: 3%; /* Posiciona o título mais próximo do topo da imagem */
+        left: 10px; /* Alinha o título à esquerda */
+        text-align: left; /* Garante que o texto dentro do h3 fique alinhado à esquerda */
+        background-color: rgba(8, 8, 10, 0.5);
+        border-radius: 20px;
+        padding: 10px;
+    }
+.navbar {
+        text-align: start;
+        position: relative;
+        color:black;
+        display: flex;
+        flex-direction: row;
+}
+    
+.dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    
+.dropdown-content {
+        display: none;
+        position: absolute;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,1);
+        z-index: 1;
+        
+    }
+    
+.dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+    
+.dropdown-content a:hover {
+        background-color: #7AC74F;
+    }
+    
+.dropdown:hover .dropdown-content {
+        display: block;
+    }
+    
+.dropdown:hover lottie-player {
+        cursor: pointer;
+    }
+@media (max-width: 1920px) {
+        .image {
+            flex: 1 1 calc(20% - 20px); /* Ocupa 33.33% da largura menos a margem, permitindo 3 imagens por linha */
+            max-width: calc(20% - 20px);
+        }
+    }
+    
+@media (max-width: 1200px) {
+        .image {
+            flex: 1 1 calc(33.33% - 20px); /* Ocupa 33.33% da largura menos a margem, permitindo 3 imagens por linha */
+            max-width: calc(33.33% - 20px);
+        }
+    }
+@media (max-width: 900px) {
+        .image {
+            flex: 1 1 calc(50% - 20px); /* Ocupa 50% da largura menos a margem, permitindo 2 imagens por linha */
+            max-width: calc(50% - 20px);
+        }
+    }
+    
+    @media (max-width: 600px) {
+        .image {
+            flex: 1 1 100%; /* Ocupa 100% da largura, uma imagem por linha */
+            max-width: 100%;
+        }
+    }
